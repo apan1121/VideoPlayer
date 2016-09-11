@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="jq-html5-video-player.js"></script>
+<link rel="stylesheet" href="jq-html5-video-player.css">
+
+
+
+<style>
+body{
+	margin:0px;
+}
+
+</style>
+<script>
+var chapter = {
+
+    0 :{"key":"test","name":"第一段落","start":"","end":""},
+    1 :{"key":"test2","name":"第二段落第二段落第二段落第二段落第二段落第二段落","start":":4","end":"5"},
+    2 :{"key":"test3","name":"第三段落","start":"3","end":""},
+    3 :{"key":"test4","name":"第四段落","start":"00:00:04","end":"9"},
+    4 :{"key":"test5","name":"第五段落","start":"00:10:02","end":"6"},
+    5 :{"key":"test6","name":"第六段落","start":"4","end":"10"},
+    6 :{"key":"test7","name":"第七段落","start":"5","end":"6"},
+    7 :{"key":"test8","name":"第八段落","start":"3","end":"9"},
+
+};
+
+var callbackSet ={
+    4:{"key":"E","time":"00:6.03"},
+    0:{"key":"D","time":"00:10"},
+    1:{"key":"A","time":"1:09:03"},
+    2:{"key":"J","time":"00:04"},
+    3:{"key":"C","time":"00:05"},
+};
+
+// var callbackSet = {
+//     0 :{"time":"0.1","key":"a"},
+//     1 :{"time":"1","key":"b"},
+//     2 :{"time":"2","key":"c"},
+//     3 :{"time":"3","key":"d"},
+//     4 :{"time":"4","key":"e"},
+// }
+
+var options = {
+	controlbarFloating : false,
+    chapter : chapter,
+    canSelectChapter:true,
+
+    callbackSet_need_reset : true,
+    callbackSet: callbackSet,
+    callback:function(key){
+        console.log(key);
+    },
+    lang: {
+            "Volume_value":" 音量 : ##Volume_value##%",
+            "chapter_show" :"段落 : ##chapter_key##",
+            "PlayStatus_Play":"播放",
+            "PlayStatus_Pause":"暫停",
+                }
+
+
+}
+var htmlPlayer ="";
+$(document).ready(function(){
+	htmlPlayer = new html5VideoPlayer("#test",options);
+    htmlPlayer.gotochapter("test3");
+});
+</script>
+</head>
+<body>
+
+
+<video id='test'controls width='1000px'>
+	<!-- <source src="e10974709ae0b2adfb5b9ce56a5e02b9.mp4" type="video/mp4"> -->
+    <source src="movie.mp4" type="video/mp4">
+	<source src="movie.ogg" type="video/ogg">
+	Your browser does not support the video tag.
+</video>
+
+
+
+</body>
+</html>
